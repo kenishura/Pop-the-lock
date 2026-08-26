@@ -3,6 +3,9 @@ using UnityEngine;
 public class Indicator : MonoBehaviour
 {
     GameObject target;
+    public PedalMovement pedalMovement;
+    public GameEvent dotMissedEvent;
+    public GameEvent dotScoredEvent;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -21,4 +24,20 @@ public class Indicator : MonoBehaviour
             Debug.Log("Target Lost!!");
         }
     }
+
+    private void Update()
+    {
+        if (pedalMovement._didTap && pedalMovement.isRunning)
+        {
+            if (target != null) {
+                Destroy(target);
+                dotScoredEvent.Raise();
+            }
+            else
+            {
+                dotMissedEvent.Raise();
+            }
+        }
+    }
+
 }

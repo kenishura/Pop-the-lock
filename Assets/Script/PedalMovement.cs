@@ -8,12 +8,12 @@ public class PedalMovement : MonoBehaviour
     public int rotationSpeed = 20;
     public Direction _direction = Direction.ClockWise;
 
-    bool isRunning = false;
+    public bool isRunning = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PedalMovement : MonoBehaviour
         {
             GameLoop();
         }
-        else if (Input.GetMouseButtonDown(0)) {
+        else if (_didTap) {
             Debug.Log("Started Game");
             isRunning = true;
             return;
@@ -34,12 +34,20 @@ public class PedalMovement : MonoBehaviour
     {
         indicatorTransform.RotateAround(anchorTransform.position, Vector3.forward, rotationSpeed * Time.deltaTime * -(int)_direction);
 
-        if (Input.GetMouseButtonDown(0))
+        if (_didTap)
         {
             ChangeDirection();
         }
     }
-    
+
+    public bool _didTap
+    {
+        get
+        {
+            return Input.GetMouseButtonDown(0);
+        }
+    }
+
     void ChangeDirection()
     {
         switch (_direction)
