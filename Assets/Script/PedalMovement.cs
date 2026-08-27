@@ -7,13 +7,13 @@ public class PedalMovement : MonoBehaviour
     public Transform anchorTransform;
     public int rotationSpeed = 20;
     public Direction _direction = Direction.ClockWise;
+    Vector3 initialPos;
 
     public bool isRunning = false;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public void Start()
     {
-
+        initialPos = indicatorTransform.localPosition;
     }
 
     // Update is called once per frame
@@ -23,7 +23,7 @@ public class PedalMovement : MonoBehaviour
         {
             GameLoop();
         }
-        else if (_didTap) {
+        else if (_didTap && isRunning == false) {
             Debug.Log("Started Game");
             isRunning = true;
             return;
@@ -62,10 +62,21 @@ public class PedalMovement : MonoBehaviour
         }
     }
 
-    public enum Direction
+    public void ResetPosition()
     {
-         ClockWise = 1,
-         AntiClockWise = -1
+        indicatorTransform.localPosition = initialPos;
+        indicatorTransform.localRotation = Quaternion.Euler(0, 0, 0);
     }
 
+    public void Stop()
+    {
+        isRunning = false;
+    }
+
+}
+
+public enum Direction
+{
+    ClockWise = 1,
+    AntiClockWise = -1
 }

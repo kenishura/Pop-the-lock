@@ -694,6 +694,7 @@ GameObject:
   - component: {fileID: 681264671}
   - component: {fileID: 681264673}
   - component: {fileID: 681264672}
+  - component: {fileID: 681264674}
   m_Layer: 5
   m_Name: Text (TMP) (1)
   m_TagString: Untagged
@@ -819,6 +820,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 681264670}
   m_CullTransparentMesh: 1
+--- !u!114 &681264674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 681264670}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0322321ac110844b46c81fcc783c01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: e1672dc62babc284b99445f63a79caa8, type: 2}
 --- !u!1 &972097589
 GameObject:
   m_ObjectHideFlags: 0
@@ -919,6 +933,8 @@ GameObject:
   - component: {fileID: 1302346688}
   - component: {fileID: 1302346689}
   - component: {fileID: 1302346690}
+  - component: {fileID: 1302346692}
+  - component: {fileID: 1302346691}
   m_Layer: 0
   m_Name: LockPad
   m_TagString: Untagged
@@ -1042,6 +1058,59 @@ MonoBehaviour:
           m_StringArgument: Won
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1302346687}
+        m_TargetAssemblyTypeName: PedalMovement, Assembly-CSharp
+        m_MethodName: Stop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Won
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1302346691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302346685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6659c1c97643a354bb4b845b6309062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 1304d7fc47199ca418adeeffeffff26f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1302346687}
+        m_TargetAssemblyTypeName: PedalMovement, Assembly-CSharp
+        m_MethodName: ResetPosition
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1302346692
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302346685}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ce9e51e0fc3d6488447c560bed986c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onGameLoadEvent: {fileID: 11400000, guid: 1304d7fc47199ca418adeeffeffff26f, type: 2}
 --- !u!1 &1456174857
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,9 +1224,8 @@ GameObject:
   - component: {fileID: 1579553587}
   - component: {fileID: 1579553588}
   - component: {fileID: 1579553589}
-  - component: {fileID: 1579553590}
   - component: {fileID: 1579553591}
-  - component: {fileID: 1579553592}
+  - component: {fileID: 1579553590}
   m_Layer: 0
   m_Name: Indicator
   m_TagString: Untagged
@@ -1296,6 +1364,7 @@ MonoBehaviour:
   pedalMovement: {fileID: 1302346687}
   dotMissedEvent: {fileID: 11400000, guid: 6a35b2609c59e5a42b22dc2487748c78, type: 2}
   dotScoredEvent: {fileID: 11400000, guid: eb361610953263f43859cc3a93208a91, type: 2}
+  isRunning: 0
 --- !u!50 &1579553591
 Rigidbody2D:
   serializedVersion: 5
@@ -1323,22 +1392,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &1579553592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1579553586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6659c1c97643a354bb4b845b6309062e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Event: {fileID: 11400000, guid: 6a35b2609c59e5a42b22dc2487748c78, type: 2}
-  Response:
-    m_PersistentCalls:
-      m_Calls: []
 --- !u!1 &1755584278
 GameObject:
   m_ObjectHideFlags: 0
@@ -1475,7 +1528,6 @@ GameObject:
   - component: {fileID: 1833810857}
   - component: {fileID: 1833810856}
   - component: {fileID: 1833810858}
-  - component: {fileID: 1833810859}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1610,17 +1662,65 @@ MonoBehaviour:
   m_GameObject: {fileID: 1833810854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f866840ba40292f4aaa92e6610180691, type: 3}
+  m_Script: {fileID: 11500000, guid: 59a93e815d7228b4b9e92be965bfd3ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remainingDots: 10
---- !u!114 &1833810859
+  gameData: {fileID: 11400000, guid: e1672dc62babc284b99445f63a79caa8, type: 2}
+--- !u!1 &1939758305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1939758307}
+  - component: {fileID: 1939758306}
+  - component: {fileID: 1939758308}
+  - component: {fileID: 1939758309}
+  m_Layer: 0
+  m_Name: Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1939758306
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1833810854}
+  m_GameObject: {fileID: 1939758305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e1fe950e7c0ff54ab38b3d898351304, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: e1672dc62babc284b99445f63a79caa8, type: 2}
+  winEvent: {fileID: 11400000, guid: 10d3f6802440fde4cbc861bcbbc5c224, type: 2}
+--- !u!4 &1939758307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939758305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1939758308
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939758305}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6659c1c97643a354bb4b845b6309062e, type: 3}
@@ -1630,9 +1730,37 @@ MonoBehaviour:
   Response:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1833810858}
-        m_TargetAssemblyTypeName: ScoreUpdater, Assembly-CSharp
-        m_MethodName: DecrementDots
+      - m_Target: {fileID: 1939758306}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: DecrementRemainingDots
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1939758309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1939758305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6659c1c97643a354bb4b845b6309062e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Event: {fileID: 11400000, guid: 1304d7fc47199ca418adeeffeffff26f, type: 2}
+  Response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1939758306}
+        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
+        m_MethodName: LoadNextLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1653,6 +1781,7 @@ GameObject:
   - component: {fileID: 1985379232}
   - component: {fileID: 1985379234}
   - component: {fileID: 1985379233}
+  - component: {fileID: 1985379235}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -1778,6 +1907,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1985379231}
   m_CullTransparentMesh: 1
+--- !u!114 &1985379235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1985379231}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 608f8be22b873cd488a4d9970eaf294c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameData: {fileID: 11400000, guid: e1672dc62babc284b99445f63a79caa8, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1787,3 +1929,4 @@ SceneRoots:
   - {fileID: 1302346686}
   - {fileID: 278758447}
   - {fileID: 271001024}
+  - {fileID: 1939758307}

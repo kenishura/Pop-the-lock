@@ -6,7 +6,7 @@ public class Indicator : MonoBehaviour
     public PedalMovement pedalMovement;
     public GameEvent dotMissedEvent;
     public GameEvent dotScoredEvent;
-
+    public bool isRunning = false;
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.CompareTag("Objective"))
@@ -27,7 +27,7 @@ public class Indicator : MonoBehaviour
 
     private void Update()
     {
-        if (pedalMovement._didTap && pedalMovement.isRunning)
+        if (pedalMovement._didTap && isRunning)
         {
             if (target != null) {
                 Destroy(target);
@@ -38,6 +38,12 @@ public class Indicator : MonoBehaviour
                 dotMissedEvent.Raise();
             }
         }
+        else if(pedalMovement._didTap && !isRunning)
+        {
+            isRunning = true;
+        }
     }
+
+
 
 }
