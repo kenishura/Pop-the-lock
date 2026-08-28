@@ -2,14 +2,12 @@ using UnityEngine;
 
 public class PedalMovement : MonoBehaviour
 {
-
+    public GameData gameData;
     public Transform indicatorTransform;
     public Transform anchorTransform;
     public int rotationSpeed = 20;
     public Direction _direction = Direction.ClockWise;
     Vector3 initialPos;
-
-    public bool isRunning = false;
 
     public void Start()
     {
@@ -19,15 +17,11 @@ public class PedalMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isRunning)
+        if (gameData.isRunning)
         {
             GameLoop();
         }
-        else if (_didTap && isRunning == false) {
-            Debug.Log("Started Game");
-            isRunning = true;
-            return;
-        }
+
     }
 
     void GameLoop()
@@ -66,11 +60,6 @@ public class PedalMovement : MonoBehaviour
     {
         indicatorTransform.localPosition = initialPos;
         indicatorTransform.localRotation = Quaternion.Euler(0, 0, 0);
-    }
-
-    public void Stop()
-    {
-        isRunning = false;
     }
 
 }

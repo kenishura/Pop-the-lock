@@ -4,10 +4,20 @@ public class GameManager : MonoBehaviour
 {
     public GameData gameData;
     public GameEvent winEvent;
+    bool isFirstTap = true;
 
     public void Start()
     {
         gameData.ResetLevel();
+    }
+
+    private void Update()
+    {
+        if (Input.GetMouseButtonDown(0) && gameData.isRunning == false && isFirstTap)
+        { 
+            gameData.isRunning = true;
+            isFirstTap = false;
+        }
     }
 
     public void DecrementRemainingDots()
@@ -26,5 +36,8 @@ public class GameManager : MonoBehaviour
         gameData.ResetLevel();
       
     }
-
+    public void Stop()
+    {
+        gameData.isRunning = false;
+    }
 }
