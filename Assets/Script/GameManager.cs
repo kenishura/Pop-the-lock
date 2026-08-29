@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) && gameData.isRunning == false && isFirstTap)
+        if (_didTap && gameData.isRunning == false && isFirstTap)
         { 
             gameData.isRunning = true;
             isFirstTap = false;
@@ -30,14 +30,25 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void LoadNextLevel()
+    public void LoadLevel(bool isNextLevel)
     {
-        gameData.currentLevel++;
+        if (isNextLevel) gameData.currentLevel++;
+
         gameData.ResetLevel();
-      
+        isFirstTap = true;
+
     }
+
     public void Stop()
     {
         gameData.isRunning = false;
+    }
+
+    public bool _didTap
+    {
+        get
+        {
+            return Input.GetMouseButtonDown(0);
+        }
     }
 }

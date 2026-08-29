@@ -6,7 +6,7 @@ public class PedalMovement : MonoBehaviour
     public Transform indicatorTransform;
     public Transform anchorTransform;
     public int rotationSpeed = 20;
-    public Direction _direction = Direction.ClockWise;
+    public Direction Direction = Direction.ClockWise;
     Vector3 initialPos;
 
     public void Start()
@@ -26,7 +26,7 @@ public class PedalMovement : MonoBehaviour
 
     void GameLoop()
     {
-        indicatorTransform.RotateAround(anchorTransform.position, Vector3.forward, rotationSpeed * Time.deltaTime * -(int)_direction);
+        indicatorTransform.RotateAround(anchorTransform.position, Vector3.forward, rotationSpeed * Time.deltaTime * -(int)Direction);
 
         if (_didTap)
         {
@@ -44,14 +44,14 @@ public class PedalMovement : MonoBehaviour
 
     void ChangeDirection()
     {
-        switch (_direction)
+        switch (Direction)
         {
             case Direction.ClockWise:
-                _direction = Direction.AntiClockWise;
+                Direction = Direction.AntiClockWise;
                 break;
 
             case Direction.AntiClockWise:
-                _direction = Direction.ClockWise;
+                Direction = Direction.ClockWise;
                 break;
         }
     }

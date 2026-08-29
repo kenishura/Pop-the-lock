@@ -2,11 +2,11 @@ using UnityEngine;
 
 public class EventInvoker : MonoBehaviour
 {
-    public GameEvent onGameLoadEvent;
+    public GameEvent[] gameEvents;
 
-    public void RaiseLoadGameEvent()
+    public void RaiseGameEvent(int i)
     {
-        onGameLoadEvent.Raise();
+        gameEvents[i].Raise();
     }
 
 }

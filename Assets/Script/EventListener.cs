@@ -3,11 +3,25 @@ using UnityEngine.Events;
 
 public class EventListener : MonoBehaviour
 {
-    public GameEvent Event;
+    public GameEvent[] Event;
     public UnityEvent Response;
 
-    private void OnEnable() { Event.Register(this); }
-    private void OnDisable() { Event.Unregister(this); }
+    private void OnEnable()
+    {
+        foreach(var e in Event)
+        {
+            e.Register(this);
+        }
+    }
+
+    private void OnDisable()
+    {
+        foreach (var e in Event)
+        {
+            e.Unregister(this);
+        }
+    }
+
     public void OnEventRaised() { Response.Invoke(); }
 
 }

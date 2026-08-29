@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 206878e7d62b9124da391f448f28e778, type: 3}
-  m_Name: DefauiltGameData
+  m_Script: {fileID: 11500000, guid: 3e9099f5c24ef444cb1a0276bd484830, type: 3}
+  m_Name: LoseEvent
   m_EditorClassIdentifier: 
-  currentLevel: 1
-  dotsRemaining: 9
-  stars: 10
-  isRunning: 0

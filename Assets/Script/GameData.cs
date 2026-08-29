@@ -4,7 +4,6 @@ using UnityEngine;
 public class GameData : ScriptableObject
 {
     public int currentLevel;
-    public int maxUnlockedLevel;
     public int dotsRemaining;
     public int stars;
 
@@ -15,5 +14,12 @@ public class GameData : ScriptableObject
         isRunning = false;
         dotsRemaining = currentLevel;
     }
+
+    public void ResetData()
+    {
+        currentLevel = 1;
+        dotsRemaining = currentLevel;
+    }
+
 
 }
